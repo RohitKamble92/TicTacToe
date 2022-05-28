@@ -55,6 +55,11 @@ public class TicTacToe {
             boardArray[position] = player2Choice;
         }
     }
+    private static int flipToss() {
+        Random toss = new Random();
+        int tossValue = toss.nextInt(2)+1;
+        return tossValue;
+    }
 
     public static void main(String[] args) {
 
