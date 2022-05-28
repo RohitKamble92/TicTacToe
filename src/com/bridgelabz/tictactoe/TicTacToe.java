@@ -1,5 +1,6 @@
 package com.bridgelabz.tictactoe;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class TicTacToe {
@@ -55,10 +56,26 @@ public class TicTacToe {
             boardArray[position] = player2Choice;
         }
     }
+
     private static int flipToss() {
         Random toss = new Random();
-        int tossValue = toss.nextInt(2)+1;
+        int tossValue = toss.nextInt(2) + 1;
         return tossValue;
+    }
+
+    private static void gamePlay(int tossValue) {
+        for (int i = 1; i < 10; i++) {
+            if (i % 2 == 0) {
+                if (tossValue == 2) {
+                    getUserInput(1);
+                } else {
+                    getUserInput(2);
+                }
+            } else {
+                getUserInput(tossValue);
+            }
+            showBoard();
+        }
     }
 
     public static void main(String[] args) {
@@ -67,7 +84,8 @@ public class TicTacToe {
         initBoard();
         playerChoice();
         showBoard();
-
+        int tossValue = flipToss();
+        gamePlay(tossValue);
 
     }
 }
